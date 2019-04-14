@@ -1,5 +1,6 @@
 package com.huatec.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.huatec.coolweather.gson.Forecast;
 import com.huatec.coolweather.gson.Weather;
+import com.huatec.coolweather.service.AutoUpdateService;
 import com.huatec.coolweather.util.HttpUtil;
 import com.huatec.coolweather.util.Utility;
 
@@ -241,5 +243,9 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+
+        //自动更新服务
+        Intent i=new Intent(this, AutoUpdateService.class);
+        startService(i);
     }
 }
